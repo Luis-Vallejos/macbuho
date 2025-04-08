@@ -14,7 +14,7 @@
     <link rel="shortcut icon" href="images/iso-macbuho.svg" type="image/x-icon">
     <title>Macbuho</title>
 
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v=1">
 
 </head>
 
