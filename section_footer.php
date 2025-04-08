@@ -1,3 +1,15 @@
+    <div id="whatsapp-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>¿Quieres enviar un mensaje por WhatsApp?</h2>
+            <p>Confirma que deseas enviar este mensaje.</p>
+            <div class="modal-actions">
+                <button class="btn-cancel" onclick="closeModal()">Salir</button>
+                <button class="btn-confirm" onclick="confirmSend()">Enviar</button>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <ul class="footer_top">
             <li>
@@ -54,6 +66,38 @@
 
     <script type="text/javascript" src="js/script.js"></script>
     <script type="text/javascript" src="js/mobile.js"></script>
+    <script>
+        let selectedProductTitle = "";
 
+        function openModal(title) {
+            selectedProductTitle = title;
+            document.getElementById("whatsapp-modal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("whatsapp-modal").style.display = "none";
+        }
+
+        function confirmSend() {
+            const confirmar = confirm("¿Seguro que deseas enviar este mensaje por WhatsApp?");
+            if (confirmar) {
+                const telefono = "51958957066";
+                const mensaje = encodeURIComponent("¡Hola! Estoy interesado en este producto: " + selectedProductTitle);
+                window.open(`https://wa.me/${telefono}?text=${mensaje}`, "_blank");
+                closeModal();
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const productos = document.querySelectorAll(".product");
+
+            productos.forEach(function(producto) {
+                producto.addEventListener("click", function() {
+                    const titulo = this.getAttribute("data-title");
+                    openModal(titulo);
+                });
+            });
+        });
+    </script>
     </body>
 </html>
