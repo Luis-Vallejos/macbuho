@@ -37,7 +37,7 @@ $total = count($productos);
 
         $modelo = $dimensiones["refurbClearModel"] ?? "modelo_desconocido";
 
-        echo "<div class='product $modelo'>";
+        echo "<div class='product $modelo' data-title=\"" . htmlspecialchars($titulo) . "\">";        
         echo "<img src='$image' alt='Imagen del producto'><br><br>";
         echo htmlspecialchars($titulo) . "<br>";
         echo "<span>$ram</span> <span>$disco</span> <span>$anio</span> <br><br>";
